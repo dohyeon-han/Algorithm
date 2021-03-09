@@ -10,12 +10,13 @@ vector<vector<pair<int, int>>> g(20001);//시작 정점, 끝 정점, 거리
 
 void dijkstra(int start) {
 	priority_queue<pair<int, int>> pq;//정점,거리
-	pq.push({ start, 0 });//자기 자신
+	pq.push({ 0, start });//자기 자신
 	arrDis[start] = 0;//자기 자신의 거리는 0
 
 	while (!pq.empty()) {
-		int ver = pq.top().first;//정점
-		int dis = -pq.top().second;//거리
+		int dis = -pq.top().fitst;//거리 max힙이므로 마이너스
+		int ver = pq.top().second;//정점
+		
 		pq.pop();
 
 		if (arrDis[ver] < dis) continue;//거리가 기존 거리보다 작아야 함
@@ -26,7 +27,7 @@ void dijkstra(int start) {
 			int& exist = arrDis[g[ver][i].first];//기존 거리
 			if (exist > newDis) {
 				exist = newDis;
-				pq.push({ g[ver][i].first,-newDis });
+				pq.push({ -newDis,g[ver][i].first });
 			}
 		}
 	}
