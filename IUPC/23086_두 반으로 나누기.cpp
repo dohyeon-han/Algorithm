@@ -3,10 +3,10 @@
 #include <vector>
 using namespace std;
 
-// ÀÌºÐ ±×·¡ÇÁ
-// Àý±³½ÃÅ³ Ä£±¸ ½ÖÀ» Á¦¿ÜÇÑ ³ª¸ÓÁö ±×·¡ÇÁ¸¦ ¿¬°á
-// bfs·Î ÀÌºÐ ±×·¡ÇÁ°¡ µÇÁö ¾Ê´Â´Ù¸é -1
-// µÈ´Ù¸é Àý±³½ÃÅ³ Ä£±¸ ½ÖÀ» ¿¬°á½ÃÄ×À» ¶§µµ ÀÌºÐ ±×·¡ÇÁ°¡ µÇ´ÂÁö ºñ±³
+// ì´ë¶„ ê·¸ëž˜í”„
+// ì ˆêµì‹œí‚¬ ì¹œêµ¬ ìŒì„ ì œì™¸í•œ ë‚˜ë¨¸ì§€ ê·¸ëž˜í”„ë¥¼ ì—°ê²°
+// bfsë¡œ ì´ë¶„ ê·¸ëž˜í”„ê°€ ë˜ì§€ ì•ŠëŠ”ë‹¤ë©´ -1
+// ëœë‹¤ë©´ ì ˆêµì‹œí‚¬ ì¹œêµ¬ ìŒì„ ì—°ê²°ì‹œì¼°ì„ ë•Œë„ ì´ë¶„ ê·¸ëž˜í”„ê°€ ë˜ëŠ”ì§€ ë¹„êµ
 
 int n, m, k, rst[2] = { 0,0 };
 bool delChk[200001] = {};
@@ -45,7 +45,7 @@ int main() {
 		gr[order[i].second].push_back(order[i].first);
 	}
 
-	//bfs, ÀÌºÐ ±×·¡ÇÁ ³ª´©±â
+	//bfs, ì´ë¶„ ê·¸ëž˜í”„ ë‚˜ëˆ„ê¸°
 	queue<int> q;
 	for (int i = 1; i <= n; i++)
 	{
@@ -60,7 +60,7 @@ int main() {
 			{
 				int next = gr[now][j];
 				if (flag[next] != 0) {
-					if (flag[now] == flag[next]) {//ÀÌºÐ ±×·¡ÇÁX
+					if (flag[now] == flag[next]) {//ì´ë¶„ ê·¸ëž˜í”„X
 						cout << -1;
 						return 0;
 					}
@@ -71,7 +71,8 @@ int main() {
 			}
 		}
 	}
-
+	
+	// ë’¤ì—ì„œë¶€í„° delì˜ ê°„ì„  í™•ì¸í•˜ê¸°
 	int cnt;
 	for (cnt = k-1; cnt >= 0; cnt--)
 	{
